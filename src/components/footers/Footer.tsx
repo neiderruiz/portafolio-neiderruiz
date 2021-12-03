@@ -34,7 +34,7 @@ const socials = [
 
 const Footer = () => {
     return (
-        <footer className="mt-20 space-y-5 py-10">
+        <footer className="mt-20 space-y-5 py-10 ">
         <div className="flex justify-between lg:w-2/12 w-2/3 mx-auto text-purple-800">
             {
                 socials.map((social, index) => (
