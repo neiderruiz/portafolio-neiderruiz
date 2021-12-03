@@ -2,9 +2,10 @@
 
 # dependencies
 /node_modules
+/public_html
+/.git-old
 /.pnp
 .pnp.js
-/.git-old
 
 # testing
 /coverage
