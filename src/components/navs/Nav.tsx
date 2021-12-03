@@ -22,6 +22,7 @@ const Nav = () => {
     const [isMobile, setIsMobile] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
     useEffect(() => {
+        window.innerWidth < 768 ? setIsMobile(true) : setIsMobile(false);
         window.addEventListener('scroll', () => {
             window.scrollY > 0 ? setState(window.scrollY) : setState(0);
             window.innerWidth > 800 ? setIsMobile(false) : setIsMobile(true);
@@ -31,15 +32,18 @@ const Nav = () => {
 
     return (
         <>
-            <div className={`${state ? 'lg:bg-purple-600 shadow-lg transition delay-50 duration-50 ease-in-out' : null} flex fixed lg:justify-between flex-wrap lg:px-40 px-5 py-2 bg-purple-600 lg:bg-transparent w-full lg:h-20 items-center text-white`}>
-                <NavLink to="/">
-                    <h1 className={`lg:text-3xl text-2xl font-bold ${state ? 'lg:text-white' : 'lg:text-purple-600'}`} >
+            <div className={`
+            ${state ? ' shadow-lg transition delay-50 duration-50 ease-in-out gradient-primary ' : null} 
+            ${isMobile ? 'bg-gradient-to-l gradient-primary' : null } 
+            flex flex-wrap fixed lg:justify-between lg:px-40 px-5 py-2  lg:bg-transparent w-full lg:h-20 items-center text-white `}>
+                <NavLink to="/" className="w-5/6">
+                    <h1 className={`lg:text-3xl  text-2xl font-bold ${state ? 'lg:text-white' : `${isMobile ? 'text-white' : 'gradient-text-primary'}`}`} >
                         Neider Ruiz
                     </h1>
                 </NavLink>
-                <div className="w-3/6 lg:hidden text-right">
+                <div className="w-1/6 lg:hidden text-right ">
                     <button role="navigation" onClick={() => setIsOpen(!isOpen)}>
-                        <FontAwesomeIcon icon={faBars} className={`${isMobile ? 'lg:hidden' : 'lg:block'} text-2xl`} />
+                        <FontAwesomeIcon icon={faBars} className={`${isMobile ? 'lg:hidden' : 'lg:block'} text-2xl w-full`} />
                     </button>
                 </div>
                 <div className="w-1/6 px-10 lg:flex justify-between font-bold lg:show hidden">
