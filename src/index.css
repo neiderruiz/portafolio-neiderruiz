@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+#wrapper > div {
+  width: 500vw;
+}
+.section {
+  float: left;
+  width: 20%;
+}

@@ -24,7 +24,6 @@ const HeroHome: FC<Props> = ({ title, subtitle, description, showButtons }) => {
                         <ButtonLink text="Saber más" to="/about-me" type="secondary" />
                     </div>
                 }
-
             </div>
             <div className="lg:col-span-2 flex justify-end lg:mt-0 mt-5">
                 <img srcSet={`${ImageMobile} 320w,

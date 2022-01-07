@@ -33,7 +33,7 @@ const Nav = () => {
     return (
         <>
             <div className={`
-            ${state ? ' shadow-lg transition delay-50 duration-50 ease-in-out gradient-primary ' : null} 
+            ${state ? ' shadow-lg transition delay-50 duration-50 ease-in-out gradient-primary z-50' : null} 
             ${isMobile ? 'bg-gradient-to-l gradient-primary' : null } 
             flex flex-wrap fixed lg:justify-between lg:px-40 px-5 py-2  lg:bg-transparent w-full lg:h-20 items-center text-white `}>
                 <NavLink to="/" className="w-5/6">

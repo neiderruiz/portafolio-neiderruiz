@@ -2,6 +2,7 @@ import { FC, useEffect } from "react";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import TitleModal from "../titles/TitleModal";
+import SwitchArticle from "../switchArticle/SwitchArticle";
 
 type PropsModal = {
     name: string;
@@ -32,9 +33,19 @@ const ModalMorePage: FC<PropsModal> = ({ name, description, onClose, image }) =>
                 </div>
                 <div className="lg:px-24 px-5">
                     <div className="lg:w-4/6 mx-auto">
-                        <img src={image} alt={name} title={`screenshot - ${name}`} />
+                        <img src={image} alt={name} className="mx-auto" title={`screenshot - ${name}`} />
                     </div>
-                    <p dangerouslySetInnerHTML={{ __html: description }}></p>
+                    {
+                         JSON.parse(description).blocks.map((item: {type: any, data: any}, key: number) =>
+                           SwitchArticle({
+                             type: {
+                               action: item.type,
+                               information: item.data
+                             },
+                             key: key
+                           })
+                         )
+                    }
                 </div>
             </div>
         </div>

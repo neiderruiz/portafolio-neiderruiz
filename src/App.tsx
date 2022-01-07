@@ -1,5 +1,4 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import "./assets/css/tailwind.css";
 import AboutMe from './components/pages/AboutMe';
 import Home from './components/pages/Home';
 

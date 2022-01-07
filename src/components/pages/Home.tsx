@@ -7,7 +7,6 @@ import { get } from '../../services/api/api';
 import ModalMorePage from '../modals/ModalMorePage';
 import CardContact from '../cards/CardContact';
 import { informationContact, informationHome } from '../../data/aboutMe';
-
 type PropsProject = {
     id: number;
     index: number;
@@ -21,9 +20,16 @@ type PropsProject = {
     openModal: () => void;
 };
 
+type Skill = {
+    id: number;
+    name: string;
+    image: string;
+    description: string;
+};
 const Home: FC = () => {
     const [projects, setProjects] = React.useState<PropsProject[]>([]);
     const [isOpen, setIsOpen] = React.useState<number | boolean>(false);
+    const [skills, setSkills] = React.useState<Skill[] | []>([]);
     const [modal, setModal] = React.useState({
         name: '',
         description: '',
@@ -32,11 +38,19 @@ const Home: FC = () => {
     });
 
     useEffect(() => {
-        get('pages').then(res => {
+        get('pages?limit=4').then(res => {
             if (res?.content) {
                 setProjects(res.content);
             }
         });
+
+        get('skills').then(res => {
+            console.log(res.content);
+            if (res?.content) {
+                setSkills(res.content);
+            }
+        });
+
     }, []);
 
 
@@ -51,17 +65,35 @@ const Home: FC = () => {
         }
     }
 
+
+
     return (
         <Container>
             <HeroHome {...informationHome} showButtons />
-            <TitleSection text="Projectos" />
+            <TitleSection text="Habilidades" />
+            <div className="flex">
+
+                <div className="grid lg:grid-cols-5 grid-cols-3 py-14 gap-5 lg:w-8/12 mx-auto ">
+                    {
+                        skills?.map((item) => (
+                            <div className="transform transition ease-in-out duration-500 hover:scale-110 cursor-pointer hover:-rotate-12 shadow-xl hover:shadow-2xl">
+                                <img src={item.image} className="mx-auto" alt="" />
+                                <div className="text-center w-full">
+                                    <h2 className="mx-auto text-center font-bold">{item.name}</h2>
+                                </div>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+            <TitleSection text="Proyectos" />
             {
                 isOpen && <ModalMorePage {...modal} onClose={() => setIsOpen(false)} />
             }
             <div className="space-y-14" id="projects">
                 {
-                    projects.map((project) => (
-                        <Card  {...project} key={project.id} openModal={() => openModal(project?.id)} />
+                    projects.map((project, index) => (
+                        <Card  {...project} index={index} key={project.id} openModal={() => openModal(project?.id)} />
                     ))
                 }
             </div>
@@ -69,7 +101,7 @@ const Home: FC = () => {
             <div className="lg:flex lg:justify-center content-center cursor-pointer lg:space-x-5  lg:space-y-0 space-y-8 lg:px-40">
                 {
                     informationContact.map((information, index) => (
-                        <CardContact key={index} {...information} />
+                        <CardContact key={index}  {...information} />
                     ))
                 }
             </div>

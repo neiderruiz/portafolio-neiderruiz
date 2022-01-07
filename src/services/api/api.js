@@ -10,3 +10,16 @@ export const get = (url) => {
         .then(response => response.json())
         .catch(error => console.log(error));
 }
+
+export const post = (url, data) => {
+    return fetch(`${URL_API}${url}`, {
+        method: 'POST',
+        headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+        .then(response => response.json())
+        .catch(error => console.log(error));
+}
