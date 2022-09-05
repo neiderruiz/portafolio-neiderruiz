@@ -1,4 +1,4 @@
-const URL_API = process.env.REACT_APP_API_URL;
+const URL_API = import.meta.env.VITE_APP_API_URL;
 export const get = (url) => {
     return fetch(`${URL_API}${url}`, {
         method: 'GET',

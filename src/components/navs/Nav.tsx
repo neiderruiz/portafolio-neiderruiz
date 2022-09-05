@@ -34,7 +34,7 @@ const Nav = () => {
         <>
             <div className={`
             ${state ? ' shadow-lg transition delay-50 duration-50 ease-in-out gradient-primary z-50' : null} 
-            ${isMobile ? 'bg-gradient-to-l gradient-primary' : null } 
+            ${isMobile ? 'bg-gradient-to-l gradient-primary' : null} 
             flex flex-wrap fixed lg:justify-between lg:px-40 px-5 py-2  lg:bg-transparent w-full lg:h-20 items-center text-white `}>
                 <NavLink to="/" className="w-5/6">
                     <h1 className={`lg:text-3xl  text-2xl font-bold ${state ? 'lg:text-white' : `${isMobile ? 'text-white' : 'gradient-text-primary'}`}`} >
@@ -47,20 +47,24 @@ const Nav = () => {
                     </button>
                 </div>
                 <div className="w-1/6 px-10 lg:flex justify-between font-bold lg:show hidden">
-                    {items.map((item, index) => 
-                            item?.external ?
-                                <a href={item.path} key={index} className="text-white">{item.name}</a> :
-                                <NavLink key={index} className="text-white capitalize" to={item.path}>{item.name}</NavLink> 
+                    {items.map((item, index) =>
+                        item?.external ?
+                            <a href={item.path} key={index} className="text-white">{item.name}</a> :
+                            <NavLink key={index} className="text-white capitalize" to={item.path}>{item.name}</NavLink>
                     )}
                 </div>
                 {
                     isOpen ?
                         <div className="w-full font-bold space-y-5 mt-5">
-                            {items.map((item, index) => (
-                                <div key={index}>
-                                    <NavLink className="text-white capitalize w-full" to={item.path}>{item.name}</NavLink>
-                                </div>
-                            )
+                            {items.map((item, index) =>
+                                item?.external ?
+                                    <div key={index}>
+                                        <a href={item.path} target="_blank" className="text-white">{item.name}</a>
+                                    </div>
+                                    :
+                                    <div>
+                                        <NavLink key={index} className="text-white capitalize" to={item.path}>{item.name}</NavLink>
+                                    </div>
                             )}
                         </div> : null
                 }

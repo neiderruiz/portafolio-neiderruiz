@@ -1,21 +1,19 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/* ./src/tailwind.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.gradient-primary {
+  @apply bg-gradient-to-l from-purple-700 via-pink-500 to-red-600;
+}
+.gradient-primary-button {
+  @apply bg-gradient-to-l from-purple-700 via-pink-500 to-red-600;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.hover\:gradient-primary-button:hover {
+  @apply bg-gradient-to-l from-purple-800 via-pink-500 to-red-600;
 }
-
-#wrapper > div {
-  width: 500vw;
-}
-.section {
-  float: left;
-  width: 20%;
+.gradient-text-primary {
+  @apply font-extrabold text-transparent bg-clip-text  bg-gradient-to-l from-purple-700 via-pink-500 to-red-600;
 }

@@ -14,7 +14,7 @@ const HeroHome: FC<Props> = ({ title, subtitle, description, showButtons }) => {
 
     return (
         <div className="lg:grid lg:grid-cols-3 lg:h-screen lg:pl-40 flex flex-wrap-reverse">
-            <div className="lg:col-span-1 lg:space-y-10 space-y-10 lg:my-auto lg:mx-0 mt-10 mx-3">
+            <div className="lg:col-span-1 lg:space-y-10 space-y-5 lg:my-auto lg:mx-0 mt-10 mx-3">
                 <h3 className="lg:text-3xl lg:text-left text-center gradient-text-primary">{subtitle}</h3>
                 <h2 className="font-bold lg:text-5xl text-3xl ">{title}</h2>
                 <div dangerouslySetInnerHTML={{ __html: description }} className="space-y-4"></div>
@@ -25,7 +25,7 @@ const HeroHome: FC<Props> = ({ title, subtitle, description, showButtons }) => {
                     </div>
                 }
             </div>
-            <div className="lg:col-span-2 flex justify-end lg:mt-0 mt-5">
+            <div className="lg:col-span-2 flex justify-end lg:mt-0 mt-5 w-full">
                 <img srcSet={`${ImageMobile} 320w,
              ${ImageMobile} 480w,
              ${Image} 900w`}
